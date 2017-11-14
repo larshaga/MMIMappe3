@@ -13,7 +13,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="255.0" layoutY="29.0" text="Spørreskjema"/>
+            <Label layoutX="255.0" layoutY="29.0" text="Spørreskjema" />
             <Label layoutX="271.0" layoutY="80.0" text="Fakultet:" />
             <ChoiceBox id="fakultet" fx:id="fakultet" layoutX="225.0" layoutY="96.0" prefWidth="150.0">
                <items>
@@ -52,7 +52,7 @@
                   </FXCollections>
                </items>
             </ChoiceBox>
-            <Label id="wrongPassword" fx:id="wrongPassword" layoutX="175.0" layoutY="293.0" text="feil" textFill="RED" visible="false" />
+            <Label id="wrongPassword" fx:id="wrongPassword" layoutX="175.0" layoutY="320.0" text="Skriv inn studentnummer uten 's' foran" textFill="RED" visible="false" />
             <Button id="send" fx:id="send" layoutX="276.0" layoutY="352.0" mnemonicParsing="false" onAction="#nextbuttonpressed" text="Next" />
          </children>
       </AnchorPane>
