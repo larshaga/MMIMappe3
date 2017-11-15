@@ -5,9 +5,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -25,6 +29,8 @@ public class controller
     boolean moveOn = false;
     long firstClick;
     String testMethod;
+    Frame frame;
+
 
 
     @FXML
@@ -76,7 +82,14 @@ public class controller
             String Age = String.valueOf(age.getValue());
             String Sex = String.valueOf(sex.getValue());
 
-            String writeToFile = String.valueOf(totalClickTime + "|" + testMethod + "|" + Age + "|" + Sex);
+            Object[] possibilities = {"1", "2", "3", "4", "5"};
+            String satisfied = (String) JOptionPane.showInputDialog(frame,
+                    "På en skala fra 1 til 5 der 1 er Veldig Irriterende\n"
+                            + "og 5 er Veldig Hjelpsom.", "Hvordan oppfattet du det å bli rettet på?", JOptionPane.PLAIN_MESSAGE, null,
+                    possibilities,
+                    "3");
+
+            String writeToFile = String.valueOf(totalClickTime + "|" + testMethod + "|" + Age + "|" + Sex + "|" + satisfied);
             BufferedWriter writer = null;
             try {
                 writer = new BufferedWriter(new FileWriter("MMIMappe3.txt", true));
