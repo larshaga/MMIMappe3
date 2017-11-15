@@ -30,8 +30,43 @@ public class controller
     long firstClick;
     String testMethod;
     Frame frame;
+    String studnr;
 
 
+    public void testStudnr(){
+        int lastChar = Integer.parseInt(TXTstudentnummer.getText().substring(TXTstudentnummer.getText().length() - 1, TXTstudentnummer.getText().length()));
+        if (lastChar % 2 == 0) {
+            if (TXTstudentnummer.getText().toLowerCase().contains("s")) {
+                Alert alert = new Alert(Alert.AlertType.NONE, "Skriv inn studentnummer uten 's' foran", ButtonType.OK);
+                alert.showAndWait();
+
+                testMethod = "Alert";
+                moveOn = true;
+            } else {
+                Alert alert = new Alert(Alert.AlertType.NONE, "Skriv inn studentnummer med 's' foran", ButtonType.OK);
+                alert.showAndWait();
+
+                testMethod = "Alert";
+                moveOn = true;
+            }
+        } else {
+            if (TXTstudentnummer.getText().toLowerCase().contains("s")) {
+                wrongPassword.setVisible(true);
+                wrongPassword.setText("Skriv inn studentnummer uten 's' foran");
+                TXTstudentnummer.setStyle("-fx-text-box-border: red ;");
+
+                testMethod = "Red text";
+                moveOn = true;
+            } else {
+                wrongPassword.setVisible(true);
+                wrongPassword.setText("Skriv inn studentnummer med 's' foran");
+                TXTstudentnummer.setStyle("-fx-text-box-border: red ;");
+
+                testMethod = "Red text";
+                moveOn = true;
+            }
+        }
+    }
 
     @FXML
     public void nextbuttonpressed(ActionEvent actionEvent)
@@ -43,40 +78,15 @@ public class controller
 
         if (!moveOn) {
             firstClick = System.currentTimeMillis();
-            int lastChar = Integer.parseInt(TXTstudentnummer.getText().substring(TXTstudentnummer.getText().length() - 1, TXTstudentnummer.getText().length()));
-            if (lastChar % 2 == 0) {
-                if (TXTstudentnummer.getText().toLowerCase().contains("s")) {
-                    Alert alert = new Alert(Alert.AlertType.NONE, "Skriv inn studentnummer uten 's' foran", ButtonType.OK);
-                    alert.showAndWait();
+            studnr = TXTstudentnummer.getText();
+            testStudnr();
 
-                    testMethod = "Alert";
-                    moveOn = true;
-                } else {
-                    Alert alert = new Alert(Alert.AlertType.NONE, "Skriv inn studentnummer med 's' foran", ButtonType.OK);
-                    alert.showAndWait();
-
-                    testMethod = "Alert";
-                    moveOn = true;
-                }
-            } else {
-                if (TXTstudentnummer.getText().toLowerCase().contains("s")) {
-                    wrongPassword.setVisible(true);
-                    wrongPassword.setText("Skriv inn studentnummer uten 's' foran");
-                    TXTstudentnummer.setStyle("-fx-text-box-border: red ;");
-
-                    testMethod = "Red text";
-                    moveOn = true;
-                } else {
-                    wrongPassword.setVisible(true);
-                    wrongPassword.setText("Skriv inn studentnummer med 's' foran");
-                    TXTstudentnummer.setStyle("-fx-text-box-border: red ;");
-
-                    testMethod = "Red text";
-                    moveOn = true;
-                }
-            }
         }
         else {
+            if (studnr.equals(TXTstudentnummer.getText())){
+                testStudnr();
+
+            }else{
             long secondClick = System.currentTimeMillis();
             long totalClickTime = secondClick - firstClick;
             String Age = String.valueOf(age.getValue());
@@ -102,6 +112,7 @@ public class controller
                 System.out.println("Could not save to file");
             }
             Platform.exit();
+        }
         }
     }
 }
