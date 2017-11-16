@@ -94,8 +94,8 @@ public class controller
 
             Object[] possibilities = {"1", "2", "3", "4", "5"};
             String satisfied = (String) JOptionPane.showInputDialog(frame,
-                    "På en skala fra 1 til 5 der 1 er Veldig Irriterende\n"
-                            + "og 5 er Veldig Hjelpsom.", "Hvordan oppfattet du det å bli rettet på?", JOptionPane.PLAIN_MESSAGE, null,
+                    "Hvordan oppfattet du å bli rettet på?\n" + "På en skala fra 1 til 5 der 1 er Veldig Irriterende\n"
+                            + "og 5 er Veldig Hjelpsom.", "Hvordan oppfattet du å bli rettet på?", JOptionPane.PLAIN_MESSAGE, null,
                     possibilities,
                     "3");
 
