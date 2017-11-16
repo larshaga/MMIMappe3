@@ -33,6 +33,19 @@ public class controller
     String studnr;
 
 
+    public void reset(){
+        moveOn = false;
+        firstClick = 0;
+        testMethod = null;
+        studnr = null;
+        TXTstudentnummer.setText(null);
+        wrongPassword.setVisible(false);
+        fakultet.setValue(null);
+        age.setValue(null);
+        sex.setValue(null);
+        TXTstudentnummer.setStyle("-fx-text-box-border: lightgrey ;");
+    }
+
     public void testStudnr(){
         int lastChar = Integer.parseInt(TXTstudentnummer.getText().substring(TXTstudentnummer.getText().length() - 1, TXTstudentnummer.getText().length()));
         if (lastChar % 2 == 0) {
@@ -111,7 +124,7 @@ public class controller
                 e.printStackTrace();
                 System.out.println("Could not save to file");
             }
-            Platform.exit();
+            reset();
         }
         }
     }
